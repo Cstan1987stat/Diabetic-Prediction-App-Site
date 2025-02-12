@@ -3,8 +3,8 @@ import joblib
 import pandas as pd
 
 # Load models
-model = joblib.load("lg.joblib.diab")
-column_transformer = joblib.load("column_transformer.joblib.diab")
+model = joblib.load("model/lg.joblib.diab")
+column_transformer = joblib.load("preprocessing/column_transformer.joblib.diab")
 
 # Streamlit App Title
 st.title("Diabetes Classification Prediction")
