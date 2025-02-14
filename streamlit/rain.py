@@ -105,10 +105,18 @@ if submitted:
     
     st.info("Note: This tool is for screening purposes only. Consult a medical professional for proper diagnosis.")
 
-st.title("Embedded Tableau Dashboard")
-tableau_url = "https://public.tableau.com/views/LogisticRegressionDiabeticPredictionModelDashboard/ConfusionMatrixDashboard?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link"
-iframe_code = f"""
+
+st.title("Tableau")
+
+tableau_url = "https://public.tableau.com/app/profile/connor.stanley8849/viz/LogisticRegressionDiabeticPredictionModelDashboard/ModelPerformanceMetricsDashboard?publish=yes"
+
+iframe_code = f'''
     <iframe src="{tableau_url}" width="800" height="600"></iframe>
-"""
+'''
 
 st.components.v1.html(iframe_code, height=650)
+
+
+
+
+
