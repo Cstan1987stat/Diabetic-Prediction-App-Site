@@ -114,7 +114,7 @@ iframe_code = f'''
     <iframe src="{tableau_url}" width="800" height="600"></iframe>
 '''
 
-st.components.v1.html(iframe_code, height=650)
+st.components.v1.html(iframe_code, height=850)
 
 
 
