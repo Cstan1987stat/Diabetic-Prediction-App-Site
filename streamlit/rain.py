@@ -65,38 +65,42 @@ with st.form("diabetes_form"):
     heavy_drinking = st.selectbox("Are you a heavy drinker?", list(yes_no_dict.keys()))
     difficulty_walking = st.selectbox("Do you have difficulty walking or climbing stairs?", list(yes_no_dict.keys()))
     
-user_input = [
-      health_dict[general_health], physical_health_days, mental_health_days, 
-      yes_no_dict[has_insurance], yes_no_dict[physical_activity], 
-      activity_dict[activity_minutes], yes_no_dict[muscle_strengthening], 
-      yes_no_dict[high_bp], yes_no_dict[high_cholesterol], yes_no_dict[heart_disease], 
-      yes_no_dict[asthma], yes_no_dict[arthritis], 1.0 if sex == "Male" else 0.0, 
-      age, height_inches, bmi, education_dict[education], income_dict[income], 
-      smoking_dict[smoking_status], yes_no_dict[alcohol], 
-      yes_no_dict[binge_drinking], yes_no_dict[heavy_drinking], 
-      yes_no_dict[difficulty_walking]
-  ]
-  
-cols = [
-      "general_health", "physical_health_days", "mental_health_days",
-      "has_health_plan", "meets_aerobic_guidelines", "physical_activity_150min", 
-      "muscle_strengthening", "high_blood_pressure", "high_cholesterol", "heart_disease",
-      "lifetime_asthma", "arthritis", "sex", "age", "height_inches", "bmi",
-      "education_level", "income_group", "smoking_status", "alcohol_consumption",
-      "binge_drinking", "heavy_drinking", "difficulty_walking"
-  ]
-  
-df = pd.DataFrame([user_input], columns=cols)
-transformed_input = column_transformer.transform(df)
-  
-  # Make prediction
-prediction = model.predict(transformed_input)[0]
-probability = model.predict_proba(transformed_input)[0]
-  
-st.subheader("Prediction Results")
-if prediction == 1:
-    st.error(f"⚠️ The model predicts that you may have diabetes. (Confidence: {probability[1]:.2%})")
-else:
-    st.success(f"✅ The model predicts that you are not diabetic. (Confidence: {probability[0]:.2%})")
-  
-st.info("Note: This tool is for screening purposes only. Consult a medical professional for proper diagnosis.")
+    submitted = st.form_submit_button("Get Prediction")
+
+# Process input and make prediction
+if submitted:
+    user_input = [
+        health_dict[general_health], physical_health_days, mental_health_days, 
+        yes_no_dict[has_insurance], yes_no_dict[physical_activity], 
+        activity_dict[activity_minutes], yes_no_dict[muscle_strengthening], 
+        yes_no_dict[high_bp], yes_no_dict[high_cholesterol], yes_no_dict[heart_disease], 
+        yes_no_dict[asthma], yes_no_dict[arthritis], 1.0 if sex == "Male" else 0.0, 
+        age, height_inches, bmi, education_dict[education], income_dict[income], 
+        smoking_dict[smoking_status], yes_no_dict[alcohol], 
+        yes_no_dict[binge_drinking], yes_no_dict[heavy_drinking], 
+        yes_no_dict[difficulty_walking]
+    ]
+    
+    cols = [
+        "general_health", "physical_health_days", "mental_health_days",
+        "has_health_plan", "meets_aerobic_guidelines", "physical_activity_150min", 
+        "muscle_strengthening", "high_blood_pressure", "high_cholesterol", "heart_disease",
+        "lifetime_asthma", "arthritis", "sex", "age", "height_inches", "bmi",
+        "education_level", "income_group", "smoking_status", "alcohol_consumption",
+        "binge_drinking", "heavy_drinking", "difficulty_walking"
+    ]
+    
+    df = pd.DataFrame([user_input], columns=cols)
+    transformed_input = column_transformer.transform(df)
+    
+    # Make prediction
+    prediction = model.predict(transformed_input)[0]
+    probability = model.predict_proba(transformed_input)[0]
+    
+    st.subheader("Prediction Results")
+    if prediction == 1:
+        st.error(f"⚠️ The model predicts that you may have diabetes. (Confidence: {probability[1]:.2%})")
+    else:
+        st.success(f"✅ The model predicts that you are not diabetic. (Confidence: {probability[0]:.2%})")
+    
+    st.info("Note: This tool is for screening purposes only. Consult a medical professional for proper diagnosis.")
