@@ -4,7 +4,7 @@ import pandas as pd
 
 # Load models
 model = joblib.load("/mount/src/diabetic-prediction-app-site/streamlit/model/lg.joblib.diab")
-column_transformer = joblib.load("/mount/src/test/streamlit/preprocessing/column_transformer.joblib.diab")
+column_transformer = joblib.load("/mount/src/diabetic-prediction-app-site/streamlit/preprocessing/column_transformer.joblib.diab")
 
 # Streamlit App Title
 st.title("Diabetes Classification Prediction")
