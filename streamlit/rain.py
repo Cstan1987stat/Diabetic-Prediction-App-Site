@@ -105,7 +105,7 @@ if submitted:
     
     st.info("Note: This tool is for screening purposes only. Consult a medical professional for proper diagnosis.")
 
-
+st.set_page_config(layout="wide")
 st.title("Tableau")
 
 tableau_url = "https://public.tableau.com/app/profile/connor.stanley8849/viz/LogisticRegressionDiabeticPredictionModelDashboard/ModelPerformanceMetricsDashboard"
