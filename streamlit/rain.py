@@ -110,10 +110,9 @@ st.title("Tableau")
 
 tableau_url = "https://public.tableau.com/app/profile/connor.stanley8849/viz/LogisticRegressionDiabeticPredictionModelDashboard/ModelPerformanceMetricsDashboard"
 iframe_code = f'''
-    <iframe src="{tableau_url}" width="850" height="650"></iframe>
+    <iframe src="{tableau_url}" width="100%" height="900" frameborder="0" allowfullscreen></iframe>
 '''
-
-st.components.v1.html(iframe_code, height=850)
+st.components.v1.html(iframe_code, height=950)
 
 
 
