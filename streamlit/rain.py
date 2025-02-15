@@ -106,17 +106,7 @@ if submitted:
     st.info("Note: This tool is for screening purposes only. Consult a medical professional for proper diagnosis.")
 
 
-st.title("Tableau")
-
-tableau_url = "https://public.tableau.com/app/profile/connor.stanley8849/viz/LogisticRegressionDiabeticPredictionModelDashboard/ModelPerformanceMetricsDashboard"
-
-st.markdown(
-    f'''
-    <iframe src="{tableau_url}" width="100%" height="600px" frameborder="0"
-    allowfullscreen></iframe>
-    ''',
-    unsafe_allow_html=True
-)
+st.markdown('[View Tableau Dashboard](https://public.tableau.com/app/profile/connor.stanley8849/viz/LogisticRegressionDiabeticPredictionModelDashboard/ModelPerformanceMetricsDashboard')
 
 
 
