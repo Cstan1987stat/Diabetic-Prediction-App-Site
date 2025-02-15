@@ -104,3 +104,5 @@ if submitted:
         st.success(f"✅ The model predicts that you are not diabetic. (Confidence: {probability[0]:.2%})")
     
     st.info("Note: This tool is for screening purposes only. Consult a medical professional for proper diagnosis.")
+
+st.write("TEST")
