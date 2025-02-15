@@ -37,7 +37,7 @@ if __name__ == "__main__":
     st.title("My Dashboard")
     
     # Replace this URL with your Tableau Public dashboard URL
-    tableau_url = "https://public.tableau.com/app/profile/connor.stanley8849/viz/LogisticRegressionDiabeticPredictionModelDashboard/ModelPerformanceMetricsDashboard"
+    tableau_url = "https://public.tableau.com/views/LogisticRegressionDiabeticPredictionModelDashboard/ModelPerformanceMetricsDashboard?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link"
     
     embed_tableau_dashboard(tableau_url)
 
