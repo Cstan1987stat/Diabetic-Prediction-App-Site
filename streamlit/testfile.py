@@ -1,4 +1,5 @@
 import streamlit as st
+import streamlit.components.v1 as components
 import joblib
 import pandas as pd
 
@@ -104,3 +105,27 @@ if submitted:
         st.success(f"✅ The model predicts that you are not diabetic. (Confidence: {probability[0]:.2%})")
     
     st.info("Note: This tool is for screening purposes only. Consult a medical professional for proper diagnosis.")
+
+st.write('Tableau Model Performance Dashboard')
+def embed_tableau_dashboard():
+    # Get the Tableau visualization URL
+    viz_url = "https://public.tableau.com/views/LogisticRegressionDiabeticModelDashboard/ConfusionMatrixDashboard"
+    
+    # Construct the embed code using Tableau's JS API
+    tableau_html = f"""
+        <div class='tableauPlaceholder'>
+            <iframe 
+                src='{viz_url}?:embed=yes&:showVizHome=no'
+                width='100%' 
+                height='800' 
+                style='border: none;'>
+            </iframe>
+        </div>
+        <script type='text/javascript' src='https://public.tableau.com/javascripts/api/tableau-2.min.js'></script>
+    """
+    
+    # Embed the visualization
+    components.html(tableau_html, height=895, width=1100)
+
+# Call the function
+embed_tableau_dashboard()
