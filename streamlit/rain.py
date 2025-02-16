@@ -18,7 +18,7 @@ def embed_tableau_dashboard():
     """
     
     # Embed the visualization
-    components.html(tableau_html, height=800, width=None)
+    components.html(tableau_html, height=800, width=1000)
 
 # Call the function
 embed_tableau_dashboard()
