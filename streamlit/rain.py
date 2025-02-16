@@ -109,7 +109,7 @@ st.info("Note: This tool is for screening purposes only. Consult a medical profe
 
 def embed_tableau_dashboard():
     # Get the Tableau visualization URL
-    viz_url = "https://public.tableau.com/views/LogisticRegressionDiabeticPredictionModelDashboard/ModelPerformanceMetricsDashboard"
+    viz_url = "https://public.tableau.com/views/LogisticRegressionDiabeticModelDashboard/ConfusionMatrixDashboard"
     
     # Construct the embed code using Tableau's JS API
     tableau_html = f"""
