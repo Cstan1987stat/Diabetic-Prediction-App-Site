@@ -1,49 +1,28 @@
-import streamlit as st
+import streamlit.components.v1 as components
 
-# Make the layout wide
-st.set_page_config(layout="wide")
-
-def embed_tableau_dashboard(height=850):
-    """
-    Embeds a Tableau Public dashboard with proper sizing
-    """
-    # Add custom CSS to ensure full width and proper padding
-    st.markdown(
-        """
-        <style>
-        .element-container iframe {
-            width: 100%;
-        }
-        .stApp {
-            max-width: 100%;
-        }
-        [data-testid="stAppViewContainer"] {
-            padding: 1rem;
-        }
-        </style>
-        """, 
-        unsafe_allow_html=True
-    )
-    
-    viz_name = "LogisticRegressionDiabeticPredictionModelDashboard"
-    dashboard_name = "ModelPerformanceMetricsDashboard"
-    
-    html = f"""
-        <div class='tableauPlaceholder' style='width: 100%; height: {height}px; padding: 0; margin: 0;'>
-            <iframe src='https://public.tableau.com/views/{viz_name}/{dashboard_name}?:embed=yes&:showVizHome=no&:display_count=yes&:display_static_image=yes'
-                    width='100%'
-                    height='100%'
-                    frameborder='0'
-                    scrolling='no'
-                    style='display: block; margin: 0 auto;'>
-            </iframe>
-        </div>
+def embed_tableau_dashboard(url):
+    tableau_html = f"""
+    <div class='tableauPlaceholder'>
+        <object class='tableauViz' style='display:none;'>
+            <param name='host_url' value='https://public.tableau.com/' />
+            <param name='embed_code_version' value='3' />
+            <param name='site_root' value='' />
+            <param name='name' value='{url}' />
+            <param name='tabs' value='no' />
+            <param name='toolbar' value='yes' />
+            <param name='animate_transition' value='yes' />
+            <param name='display_static_image' value='yes' />
+            <param name='display_spinner' value='yes' />
+            <param name='display_overlay' value='yes' />
+            <param name='display_count' value='yes' />
+            <param name='language' value='en-US' />
+        </object>
+    </div>
     """
     
-    st.components.v1.html(html, height=height, width=None)
+    # Use components.html instead of unsafe_allow_html
+    components.html(tableau_html, height=800)
 
-# Example usage
-try:
-    embed_tableau_dashboard()
-except Exception as e:
-    st.error(f"Error loading dashboard: {str(e)}")
+# Usage
+url = "https://public.tableau.com/views/LogisticRegressionDiabeticPredictionModelDashboard/ModelPerformanceMetricsDashboard?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link"
+embed_tableau_dashboard(url)
