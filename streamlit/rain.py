@@ -125,7 +125,7 @@ def embed_tableau_dashboard():
     """
     
     # Embed the visualization
-    components.html(tableau_html, height=800, width=1000)
+    components.html(tableau_html, height=850, width=1100)
 
 # Call the function
 embed_tableau_dashboard()
