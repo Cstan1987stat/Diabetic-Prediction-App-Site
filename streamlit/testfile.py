@@ -117,7 +117,7 @@ def embed_tableau_dashboard():
         <div class='tableauPlaceholder'>
             <iframe 
                 src='{viz_url}?:embed=yes&:showVizHome=no'
-                width='100%' 
+                width='1000%' 
                 height='800' 
                 style='border: none;'>
             </iframe>
@@ -126,7 +126,7 @@ def embed_tableau_dashboard():
     """
 
     # Embed the visualization
-    components.html(tableau_html, height=1095, width=1400)
+    components.html(tableau_html, height=1095, width=2400)
 # Call the function
 embed_tableau_dashboard()
 
