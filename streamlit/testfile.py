@@ -109,8 +109,7 @@ if submitted:
 st.subheader('Tableau Model Performance Dashboard')
 def embed_tableau_dashboard():
     # Get the Tableau visualization URL
-    #viz_url = "https://public.tableau.com/views/LogisticRegressionDiabeticModelDashboard/ConfusionMatrixDashboard"
-    viz_url = "https://public.tableau.com/views/LogisticRegressionDiabeticModelDashboard/ConfusionMatrixDashboard?:embed=yes&:showVizHome=no&:size=1200,800"
+    viz_url = "https://public.tableau.com/views/LogisticRegressionDiabeticModelDashboard/ConfusionMatrixDashboard"
 
     # Construct the embed code using Tableau's JS API
     tableau_html = f"""
@@ -126,13 +125,13 @@ def embed_tableau_dashboard():
     """
 
     # Embed the visualization
-    components.html(tableau_html, height=1095, width=2400)
+    components.html(tableau_html, height=800, width=1000)
 # Call the function
 embed_tableau_dashboard()
 
 
-'''
+
 viz_url = "https://public.tableau.com/app/profile/connor.stanley8849/viz/LogisticRegressionDiabeticModelDashboard/ConfusionMatrixDashboard"
 st.write(f"Tableau Dashboard URL: {viz_url}")
-'''    
+   
   
