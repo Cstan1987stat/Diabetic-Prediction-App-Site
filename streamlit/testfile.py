@@ -107,25 +107,44 @@ if submitted:
     st.info("Note: This tool is for screening purposes only. Consult a medical professional for proper diagnosis.")
 
 st.subheader('Tableau Model Performance Dashboard')
+import streamlit as st
+import streamlit.components.v1 as components
+
 def embed_tableau_dashboard():
-    # Get the Tableau visualization URL
+    # Updated Tableau embedding method
     viz_url = "https://public.tableau.com/views/LogisticRegressionDiabeticModelDashboard/ConfusionMatrixDashboard"
     
-    # Construct the embed code using Tableau's JS API
+    # More robust embedding approach
     tableau_html = f"""
-        <div class='tableauPlaceholder'>
-            <iframe 
-                src='{viz_url}?:embed=yes&:showVizHome=no'
-                width='100%' 
-                height='800' 
-                style='border: none;'>
-            </iframe>
-        </div>
-        <script type='text/javascript' src='https://public.tableau.com/javascripts/api/tableau-2.min.js'></script>
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <script type="text/javascript" src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script>
+        <script type="text/javascript">
+            function initViz() {{
+                var containerDiv = document.getElementById("tableauViz");
+                var url = "{viz_url}";
+                var options = {{
+                    width: "100%",
+                    height: "800px",
+                    hideTabs: true,
+                    hideToolbar: false
+                }};
+                var viz = new tableau.Visualization(containerDiv, url, options);
+            }}
+            
+            window.onload = initViz;
+        </script>
+    </head>
+    <body style="margin: 0;">
+        <div id="tableauViz" style="width:100%; height:800px;"></div>
+    </body>
+    </html>
     """
     
-    # Embed the visualization
-    components.html(tableau_html, height=1095, width=1400)
+    # Use components.html with updated parameters
+    components.html(tableau_html, height=850, width=1200, scrolling=True)
 
 # Call the function
 embed_tableau_dashboard()
