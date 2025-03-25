@@ -128,10 +128,3 @@ def embed_tableau_dashboard():
     components.html(tableau_html, height=800, width=1000)
 # Call the function
 embed_tableau_dashboard()
-
-
-
-viz_url = "https://public.tableau.com/app/profile/connor.stanley8849/viz/LogisticRegressionDiabeticModelDashboard/ConfusionMatrixDashboard"
-st.write(f"Tableau Dashboard URL: {viz_url}")
-   
-  
