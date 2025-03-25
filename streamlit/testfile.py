@@ -141,7 +141,7 @@ def embed_tableau_dashboard():
         <div id="tableauViz" style="width:100%; height:800px;"></div>
     </body>
     </html>
-    """
+    '''
     
     # Use components.html with updated parameters
     components.html(tableau_html, height=850, width=1200, scrolling=True)
