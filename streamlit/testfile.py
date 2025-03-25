@@ -106,7 +106,7 @@ if submitted:
     
     st.info("Note: This tool is for screening purposes only. Consult a medical professional for proper diagnosis.")
 
-viz_url = "https://public.tableau.com/views/LogisticRegressionDiabeticModelDashboard/ConfusionMatrixDashboard"
+viz_url = "https://public.tableau.com/app/profile/connor.stanley8849/viz/LogisticRegressionDiabeticModelDashboard/ConfusionMatrixDashboard"
 st.write(f"Tableau Dashboard URL: {viz_url}")
     
   
