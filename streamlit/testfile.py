@@ -106,45 +106,77 @@ if submitted:
     
     st.info("Note: This tool is for screening purposes only. Consult a medical professional for proper diagnosis.")
 
-st.subheader('Tableau Model Performance Dashboard')
-import streamlit as st
-import streamlit.components.v1 as components
 
 def embed_tableau_dashboard():
-    # Updated Tableau embedding method
+    # Diagnostic print statements
+    st.write("Starting Tableau Dashboard Embedding")
+    
+    # URL to verify
     viz_url = "https://public.tableau.com/views/LogisticRegressionDiabeticModelDashboard/ConfusionMatrixDashboard"
+    st.write(f"Tableau Dashboard URL: {viz_url}")
     
-    # More robust embedding approach
-    tableau_html = f'''
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <script type="text/javascript" src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script>
-        <script type="text/javascript">
-            function initViz() {{
-                var containerDiv = document.getElementById("tableauViz");
-                var url = "{viz_url}";
-                var options = {{
-                    width: "100%",
-                    height: "800px",
-                    hideTabs: true,
-                    hideToolbar: false
-                }};
-                var viz = new tableau.Visualization(containerDiv, url, options);
-            }}
-            
-            window.onload = initViz;
-        </script>
-    </head>
-    <body style="margin: 0;">
-        <div id="tableauViz" style="width:100%; height:800px;"></div>
-    </body>
-    </html>
-    '''
+    try:
+        # More comprehensive HTML embedding
+        tableau_html = f'''
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="utf-8">
+            <title>Tableau Dashboard</title>
+            <script type="text/javascript" src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script>
+            <style>
+                body, html {{ margin: 0; padding: 0; height: 100%; }}
+                #tableauViz {{ width: 100%; height: 800px; }}
+            </style>
+        </head>
+        <body>
+            <div id="tableauViz"></div>
+            <script type="text/javascript">
+                function initViz() {{
+                    console.log('Initializing Tableau Visualization');
+                    var containerDiv = document.getElementById("tableauViz");
+                    var url = "{viz_url}";
+                    var options = {{
+                        width: "100%",
+                        height: "800px",
+                        hideTabs: false,
+                        hideToolbar: false
+                    }};
+                    try {{
+                        var viz = new tableau.Visualization(containerDiv, url, options);
+                        console.log('Visualization loaded successfully');
+                    }} catch (error) {{
+                        console.error('Error loading visualization:', error);
+                    }}
+                }}
+                
+                // Multiple load event listeners for broader compatibility
+                if (document.readyState === 'loading') {{
+                    document.addEventListener('DOMContentLoaded', initViz);
+                }} else {{
+                    initViz();
+                }}
+            </script>
+        </body>
+        </html>
+        '''
+        
+        # Embed with verbose error handling
+        st.write("Attempting to embed Tableau dashboard")
+        components.html(
+            tableau_html, 
+            height=850, 
+            width=1200, 
+            scrolling=True
+        )
+        st.write("Tableau dashboard embedding completed")
     
-    # Use components.html with updated parameters
-    components.html(tableau_html, height=850, width=1200, scrolling=True)
+    except Exception as e:
+        st.error(f"Error embedding Tableau dashboard: {e}")
+        st.write("Possible reasons:")
+        st.write("1. Incorrect URL")
+        st.write("2. Dashboard no longer public")
+        st.write("3. Tableau API issues")
 
 # Call the function
 embed_tableau_dashboard()
