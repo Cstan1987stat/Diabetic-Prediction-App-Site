@@ -115,7 +115,7 @@ def embed_tableau_dashboard():
     viz_url = "https://public.tableau.com/views/LogisticRegressionDiabeticModelDashboard/ConfusionMatrixDashboard"
     
     # More robust embedding approach
-    tableau_html = f"""
+    tableau_html = f'''
     <!DOCTYPE html>
     <html>
     <head>
