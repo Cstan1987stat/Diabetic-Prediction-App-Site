@@ -107,4 +107,5 @@ if submitted:
     st.info("Note: This tool is for screening purposes only. Consult a medical professional for proper diagnosis.")
 
 st.subheader('Tableau Model Performance Dashboard')
-st.components.v1.iframe("https://public.tableau.com/views/LogisticRegressionDiabeticModelDashboard/ConfusionMatrixDashboard", height=600, width=1000)
+st.markdown("[Tableau Dashboard](https://public.tableau.com/app/profile/connor.stanley8849/viz/LogisticRegressionDiabeticModelDashboard/ConfusionMatrixDashboard)")
+
